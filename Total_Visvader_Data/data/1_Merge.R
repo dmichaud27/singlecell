@@ -11,11 +11,11 @@ library(RCurl)
 
 # Create a Seurat objects for HR Samples
 for (file in c("AH0319", "MH0001", "MH0025", "MH0029_7c", "MH0029_9c", "MH0032", "MH0040", "MH0042", "MH0043", "MH0056", "MH0064", "MH0068", "MH0114_HR", "MH0125", "MH0151", "MH0163", "MH0167", "MH0173", "PM0178", "PM0360")){
-  seurat_data <- Read10X(data.dir = paste0("/n/data1/bwh/medicine/guerriero/single-cell/dem11/visvader/GSE161529_RAW/", file))
-  seurat_obj <- CreateSeuratObject(counts = seurat_data, 
+  seurat_dataHR <- Read10X(data.dir = paste0("/n/data1/bwh/medicine/guerriero/single-cell/dem11/visvader/GSE161529_RAW/", file))
+  seurat_objHR <- CreateSeuratObject(counts = seurat_dataHR, 
                                    min.features = 100, 
                                    project = file)
-  assign(file, seurat_obj)
+  assign(file, seurat_objHR)
 }
 
 # Create a merged Seurat object
@@ -77,11 +77,11 @@ save(merged_seuratHR, file="merged_seuratHR.RData")
 
 # Create a Seurat object for HER2 samples
 for (file in c("AH0308", "MH0031", "MH0069", "MH0161", "MH0176", "PM0337")){
-  seurat_data <- Read10X(data.dir = paste0("/n/data1/bwh/medicine/guerriero/single-cell/dem11/visvader/GSE161529_RAW/", file))
-  seurat_obj <- CreateSeuratObject(counts = seurat_data, 
+  seurat_dataHER2 <- Read10X(data.dir = paste0("/n/data1/bwh/medicine/guerriero/single-cell/dem11/visvader/GSE161529_RAW/", file))
+  seurat_objHER2 <- CreateSeuratObject(counts = seurat_dataHER2, 
                                    min.features = 100, 
                                    project = file)
-  assign(file, seurat_obj)
+  assign(file, seurat_objHER2)
 }
 
 # Create a merged Seurat object
@@ -129,11 +129,11 @@ save(merged_seuratHER2, file="merged_seuratHER2.RData")
 
 # Create a Seurat object for each TNBC sample
 for (file in c("MH0114", "MH0126", "MH0131", "MH0135", "MH0177", "MH4031", "SH0106", "Tum0554")){
-  seurat_data <- Read10X(data.dir = paste0("/n/data1/bwh/medicine/guerriero/single-cell/dem11/visvader/GSE161529_RAW/", file))
-  seurat_obj <- CreateSeuratObject(counts = seurat_data, 
+  seurat_dataTNBC <- Read10X(data.dir = paste0("/n/data1/bwh/medicine/guerriero/single-cell/dem11/visvader/GSE161529_RAW/", file))
+  seurat_objTNBC <- CreateSeuratObject(counts = seurat_dataTNBC, 
                                    min.features = 100, 
                                    project = file)
-  assign(file, seurat_obj)
+  assign(file, seurat_objTNBC)
 }
 
 # Create a merged Seurat object

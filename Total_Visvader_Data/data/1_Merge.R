@@ -77,7 +77,7 @@ save(merged_seuratHR, file="merged_seuratHR.RData")
 
 # Create a Seurat object for HER2 samples
 for (file in c("AH0308", "MH0031", "MH0069", "MH0161", "MH0176", "PM0337")){
-  seurat_data <- Read10X(data.dir = paste0("/n/data1/bwh/medicine/guerriero/single-cell/dem11/visvader/GSE161529_RAW", file))
+  seurat_data <- Read10X(data.dir = paste0("/n/data1/bwh/medicine/guerriero/single-cell/dem11/visvader/GSE161529_RAW/", file))
   seurat_obj <- CreateSeuratObject(counts = seurat_data, 
                                    min.features = 100, 
                                    project = file)
@@ -129,7 +129,7 @@ save(merged_seuratHER2, file="merged_seuratHER2.RData")
 
 # Create a Seurat object for each TNBC sample
 for (file in c("MH0114", "MH0126", "MH0131", "MH0135", "MH0177", "MH4031", "SH0106", "Tum0554")){
-  seurat_data <- Read10X(data.dir = paste0("/n/data1/bwh/medicine/guerriero/single-cell/dem11/visvader/GSE161529_RAW", file))
+  seurat_data <- Read10X(data.dir = paste0("/n/data1/bwh/medicine/guerriero/single-cell/dem11/visvader/GSE161529_RAW/", file))
   seurat_obj <- CreateSeuratObject(counts = seurat_data, 
                                    min.features = 100, 
                                    project = file)

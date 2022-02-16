@@ -10,7 +10,7 @@ library(cowplot)
 library(RCurl)
 
 # Create a Seurat objects for HR Samples
-for (file in c("AH0319", "MH0001", "MH0025", "MH0029_7c", "MH0029_9c", "MH0032", "MH0040", "MH0042", "MH0043", "MH0056", "MH0064", "MH0068", "MH0114", "MH0125", "MH0151", "MH0163", "MH0167", "MH0173", "PM0178", "PM0360")){
+for (file in c("AH0319", "MH0001", "MH0025", "MH0029_7c", "MH0029_9c", "MH0032", "MH0040", "MH0042", "MH0043", "MH0056", "MH0064", "MH0068", "MH0114_HR", "MH0125", "MH0151", "MH0163", "MH0167", "MH0173", "PM0178", "PM0360")){
   seurat_data <- Read10X(data.dir = paste0("/n/data1/bwh/medicine/guerriero/single-cell/kania/visvader/GSE161529_RAW", file))
   seurat_obj <- CreateSeuratObject(counts = seurat_data, 
                                    min.features = 100, 
@@ -20,8 +20,8 @@ for (file in c("AH0319", "MH0001", "MH0025", "MH0029_7c", "MH0029_9c", "MH0032",
 
 # Create a merged Seurat object
 merged_seuratHR <- merge(x = AH0319, 
-                         y = c(MH0025, MH0001, MH0029_7c, MH0029_9c, MH0032, MH0040, MH0042, MH0043, MH0056, MH0064, MH0068, MH0114, MH0125, MH0151, MH0163, MH0167, MH0173, PM0178, PM0360),
-                         add.cell.id = c("319", "025", "001", "029_7c", "029_9c", "032", "040", "042", "043", "056", "064", "068", "114", "125", "151", "163", "167", "173", "178", "360"))
+                         y = c(MH0025, MH0001, MH0029_7c, MH0029_9c, MH0032, MH0040, MH0042, MH0043, MH0056, MH0064, MH0068, MH0114_HR, MH0125, MH0151, MH0163, MH0167, MH0173, PM0178, PM0360),
+                         add.cell.id = c("319", "025", "001", "029_7c", "029_9c", "032", "040", "042", "043", "056", "064", "068", "114_HR", "125", "151", "163", "167", "173", "178", "360"))
 
 # Add number of genes per UMI for each cell to metadata
 merged_seuratHR$log10GenesPerUMI <- log10(merged_seuratHR$nFeature_RNA) / log10(merged_seuratHR$nCount_RNA)
@@ -50,7 +50,7 @@ metadataHR$sample[which(str_detect(metadataHR$cells, "043_"))] <- "043"
 metadataHR$sample[which(str_detect(metadataHR$cells, "056_"))] <- "056"
 metadataHR$sample[which(str_detect(metadataHR$cells, "064_"))] <- "064"
 metadataHR$sample[which(str_detect(metadataHR$cells, "068_"))] <- "068"
-metadataHR$sample[which(str_detect(metadataHR$cells, "114_"))] <- "114"
+metadataHR$sample[which(str_detect(metadataHR$cells, "114_HR"))] <- "114_HR"
 metadataHR$sample[which(str_detect(metadataHR$cells, "125_"))] <- "125"
 metadataHR$sample[which(str_detect(metadataHR$cells, "151_"))] <- "151"
 metadataHR$sample[which(str_detect(metadataHR$cells, "163_"))] <- "163"

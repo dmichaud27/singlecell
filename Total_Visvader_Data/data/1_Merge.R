@@ -11,7 +11,7 @@ library(RCurl)
 
 # Create a Seurat objects for HR Samples
 for (file in c("AH0319", "MH0001", "MH0025", "MH0029_7c", "MH0029_9c", "MH0032", "MH0040", "MH0042", "MH0043", "MH0056", "MH0064", "MH0068", "MH0114_HR", "MH0125", "MH0151", "MH0163", "MH0167", "MH0173", "PM0178", "PM0360")){
-  seurat_data <- Read10X(data.dir = paste0("/n/data1/bwh/medicine/guerriero/single-cell/dem11/visvader/GSE161529_RAW", file))
+  seurat_data <- Read10X(data.dir = paste0("/n/data1/bwh/medicine/guerriero/single-cell/dem11/visvader/GSE161529_RAW/", file))
   seurat_obj <- CreateSeuratObject(counts = seurat_data, 
                                    min.features = 100, 
                                    project = file)
